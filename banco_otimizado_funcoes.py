@@ -15,6 +15,7 @@ def menu():
       [cc]\tCriar Conta
       [lc]\tListar Conta
       [cu]\tCadastrar Usuário
+      [lu]\tListar Usuário
       [q]\tSair
 
       => """
@@ -53,14 +54,26 @@ def criar_conta(agencia, numero_conta, usuarios):
     
     print("Usuário não encontrado! Conta não criada!")
 #listar cliente
+def listar_cliente(usuarios):
+   for usuario in usuarios:
+      printar = f"""
+        Nome: \t{usuario["nome"]}
+        CPF: \t{usuario["cpf"]}
+        Data de Nascimento: \t{usuario["data_nascimento"]}
+        Endereço: \t{usuario["endereco"]}
+      """
+      print(printar)
+      os.system("pause")
+#listar conta
 def listar_conta(contas):
     # percorrer pelo VETOR (n_deposito)
     for conta in contas:
       printar = f"""
           Agência: \t{conta["agencia"]}
-          Numero da Conta: \t{conta["numero_conta"]}
+          Numero Conta: \t{conta["numero_conta"]}
           Titular: \t{conta["usuario"]["nome"]}
       """
+      print(printar)
       os.system("pause")
 # saque por kwd
 def sacar(*, saldo,extrato, limite, numero_saques):
@@ -141,6 +154,9 @@ def main():
         new_conta = criar_conta(AGENCIA,numero_conta,usuarios)
         if new_conta:
           contas.append(new_conta)
+    #Listar_Usuario = apenas usuarios
+      elif opcao == 'lu':
+         listar_cliente(usuarios)
     #Lista Conta = apenas contas
       elif opcao == 'lc':
         listar_conta(contas)
