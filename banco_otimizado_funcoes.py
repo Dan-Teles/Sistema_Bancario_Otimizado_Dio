@@ -58,7 +58,7 @@ def listar_conta(contas):
     for conta in contas:
       printar = f"""
           Agência: \t{conta["agencia"]}
-          Numero Conta: \t{conta["numero_conta"]}
+          Numero da Conta: \t{conta["numero_conta"]}
           Titular: \t{conta["usuario"]["nome"]}
       """
       os.system("pause")
@@ -82,9 +82,8 @@ def sacar(*, saldo,extrato, limite, numero_saques):
         print("Não será possível sacar por falta de saldo!")
         os.system("pause")
     return saldo,extrato
-#depositar 
+#depositar apenas por posição
 def depositar(saldo,extrato, /):
-    #apenas por posição
     valor = float(input("Digite o valor a depositar: "))
     while valor <= 0:
       valor = float(input("Digite o valor a depositar maior que 0: "))
